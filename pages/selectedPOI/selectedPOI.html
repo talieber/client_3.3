@@ -1,0 +1,79 @@
+
+<table width="100%">
+    <tr>
+        <td>
+            <table>
+                <tr>
+                    <td>
+                        Name:
+                        <div class="divider"></div>
+                    </td>
+                    <td>
+                        {{poi_name}}
+                    </td>
+                    <td ng-show = "isLogedIn">
+                            <img ng-src="toAdd.png" width="30" height="30" ng-click="addToFavorites()" ng-hide="toHide()">
+                            <img ng-src="love.png" width="30" height="30" ng-click="removeFromFavorites()" ng-show="toHide()">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Description:
+                        <div class="divider"></div>
+                    </td>
+                    <td>
+                        {{description}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Views number:
+                        <div class="divider"></div>
+                    </td>
+                    <td>
+                        {{views_number}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Category:
+                        <div class="divider"></div>
+                    </td>
+                    <td>
+                        {{category}}
+                    </td>
+                </tr>
+                <td>
+                        Rank:
+                        <div class="divider"></div>
+                    </td>
+                    <td>
+                        {{avg_rank}}
+                    </td>
+                </tr>
+                <tr>
+                    <td ng-hide="isHiddingFirstReview">
+                        Review #1 {{first_review_date}}:
+                        <div class="divider"></div>
+                    </td>
+                    <td ng-hide="isHiddingFirstReview">
+                        {{first_review}}
+                    </td>
+                </tr>
+                <tr>
+                    <td ng-hide="isHiddingSecondReview">
+                        Review #2 {{second_review_date}}:
+                        <div class="divider"></div>
+                    </td>
+                    <td ng-hide="isHiddingSecondReview">
+                        {{second_review}}
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <img ng-src="{{link_to_picture}}" height="300" width="300">
+        </td>
+    </tr>
+
+</table>

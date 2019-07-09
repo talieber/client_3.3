@@ -1,0 +1,36 @@
+
+<h2>POI</h2>
+
+<hr/>
+Insert POI name:  
+<input ng-model="poiToSearch" type="text">
+<button ng-click="searchPOI()">Search!</button><br/><br/>
+Show by category:
+<select ng-model="choosenCategory" ng-options="b for b in categories">
+        <option value="">-- Select category --</option>
+</select>
+<button ng-click="select()">Select!</button><br/><br/>
+<button ng-click="clear()">Clear</button>
+
+<hr/>
+
+<table>
+  <tr>
+    <th>
+      <button ng-click="sortBy('rank')">Sort by rank {{direction}}</button>
+      <span class="sortorder" ng-class="{reverse: reverse}"></span>
+    </th>
+    <tr ng-repeat="s in allPoisToShow | orderBy:[ '!rank', '-rank', ]:reverse">
+
+    <td>
+        <a ng-href="#!selectedPOI/{{s.poi_name}}"><h3>{{s.poi_name}}</h3></a>
+        <img ng-src="toAdd.png" width="30" height="30" ng-click="addToFavorites(s.poi_name)" ng-show="isLogedIn" ng-hide="toHide(s.poi_name)">
+        <img ng-src="love.png" width="30" height="30" ng-click="removeFromFavorites(s.poi_name)" ng-show="toHide(s.poi_name)">
+        <br/>
+        <a ng-href="#!selectedPOI/{{s.poi_name}}"><img ng-src="{{s.picture}}" width="300" height="300"></a>
+    </td>
+  </tr>
+</table>
+</div>
+
+

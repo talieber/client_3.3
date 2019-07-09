@@ -1,0 +1,120 @@
+
+<h3>Please insert the following in order to register:<br/></h3>
+
+<form name="registerForm" ng-submit="submit()" novalidate>
+
+<table>
+    <tr>
+        <td> Username: </td>
+        <td> <input ng-model="username" type="text" name="username" required ng-minlength="3" ng-maxlength="8" pattern="[a-zA-Z ]*">
+            <span ng-show="registerForm.username.$error.required">Username is required! </span>
+            <span ng-show="registerForm.username.$error.minlength">Minimum length is 3. </span>
+            <span ng-show="registerForm.username.$error.maxlength">Maximum length is 8. </span>
+            <span ng-show="registerForm.username.$invalid">Invalid field,  must contains letters only.</span>
+        </td>
+    </tr>
+    <tr>
+            <td> Password: </td>
+            <td> <input ng-model="password" type="text" name="password" required ng-minlength="5" ng-maxlength="10" pattern="^.*(?=.{4,10})(?=.*\d)(?=.*[a-zA-Z]).*$">
+                <span ng-show="registerForm.password.$error.required">Password is required! </span>
+                <span ng-show="registerForm.password.$error.minlength">Minimum length is 5. </span>
+                <span ng-show="registerForm.password.$error.maxlength">Maximum length is 10. </span>
+                <span ng-show="registerForm.password.$invalid">Invalid field, must contains letters and numbers.</span></td>
+        </tr>
+    <tr>
+        <td> First name: </td>
+        <td> <input ng-model="firstName" type="text" name="firstName" required>
+            <span ng-show="registerForm.firstName.$error.required">First name is required.</span>
+        </td>
+    </tr>
+    <tr>
+        <td> Last name: </td>
+        <td> <input ng-model="lastName" type="text" name="lastName" required>
+            <span ng-show="registerForm.lastName.$error.required">Last name is required.</span>
+        </td>
+    </tr>
+    <tr>    
+        <td> City: </td>
+        <td> <input ng-model="city" type="text" name="city" required>
+            <span ng-show="registerForm.city.$error.required">City is required.</span>
+        </td>
+    </tr>
+    <tr>
+        <td> Country: </td>
+        <td ng-init=getCountries()>  
+                <select ng-model="countrySelection" name="countrySelection" ng-options="b for b in countryList" required>
+                        <option value="">-- Select a Country --</option>
+                    </select>
+            <span ng-show="registerForm.countrySelection.$error.required">Country is required.</span>
+
+        </td>
+    </tr>
+    <tr>
+        <td> Email: </td>
+        <td> <input ng-model="email" type="email" name="email" required>
+            <span ng-show="registerForm.email.$error.required">Email is required. example: israel@israeli.com</span>
+        </td>
+    </tr>
+    <tr>
+        <td> First field of interest: </td>
+        <td> <select ng-model="firstFOI" name="firstFOI" ng-options="b for b in fieldsOfInterest" required data-validate-not-equal="{{secondFOI}}">
+                <option value="">-- Select Field of Interest --</option>
+            </select>
+            <span ng-show="registerForm.firstFOI.$error.required">Field of interest is required.</span>
+            <span data-ng-show="registerForm.firstFOI.$error.notEqual">Should not match second field of interst.</span>
+
+        </td>
+    </tr>
+    <tr>
+        <td> Second field of interest: </td>
+        <td> <select ng-model="secondFOI" name="secondFOI" ng-options="b for b in fieldsOfInterest" required  data-validate-not-equal="{{firstFOI}}">
+                <option value="">-- Select Field of Interest --</option>
+            </select>
+            <span ng-show="registerForm.secondFOI.$error.required">Field of interest is required.</span>
+            <span data-ng-show="registerForm.secondFOI.$error.notEqual">Should not match first field of interst.</span>
+
+        </td>
+    </tr>
+    <tr>
+        <td> First authentication question: </td>
+        <td> <select ng-model="firstSelectedQuestion" name="firstSelectedQuestion" ng-options="b for b in arrQuestions" required data-validate-not-equal="{{secondSelectedQuestion}}">
+                <option value="">-- Select a Question --</option>
+            </select>
+            <span ng-show="registerForm.firstSelectedQuestion.$error.required">Validate question is required.</span>
+            <span data-ng-show="registerForm.firstSelectedQuestion.$error.notEqual">Should not match second validate question.</span>
+        </td>
+    </tr>
+    <tr>
+        <td> First authentication answer: </td>
+        <td> <input ng-model="firstAns" type="text" name="firstAns" required>
+            <span ng-show="registerForm.firstAns.$error.required">Answer is required.</span>
+        </td>
+    </tr>
+    <tr>
+        <td> Second authentication question: </td>
+        <td> <select ng-model="secondSelectedQuestion" name="secondSelectedQuestion" ng-options="b for b in arrQuestions" required data-validate-not-equal="{{firstSelectedQuestion}}">
+                <option value="">-- Select a Question --</option>
+            </select>
+            <span data-ng-show="registerForm.secondSelectedQuestion.$error.notEqual">Should not match first validate question.</span>
+            <span ng-show="registerForm.secondSelectedQuestion.$error.required">Validate question is required.</span>
+        </td>
+    </tr>
+    <tr>
+        <td> Second authentication answer: </td>
+        <td> <input ng-model="secondAns" type="text" name="firstAns" required>
+            <span ng-show="registerForm.firstAns.$error.required">Answer is required.</span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input ng-disabled="registerForm.$invalid" type="submit" id="submit" value="Submit">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            {{re}}
+        </td>
+    </tr>
+</table>
+</form>
+

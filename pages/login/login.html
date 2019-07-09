@@ -1,0 +1,66 @@
+<div ng-hide = "isLogedIn">
+    <table width=100%>
+        <tr>
+            <td>
+                <h2>Please enter the folliwing details:</h2><br/>
+                <table>
+                    <tr>
+                        <td> Username: 
+                            <div class="divider"></div>
+                        </td>
+                        <td> <input ng-model="usernameInput" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td> Password: </td>
+                        <td> <input ng-model="password" type="text"></td>
+                    </tr>
+                </table>
+                <br/>
+                <button ng-click="tryLogin()">Login</button>
+                <br/>
+                <div>
+                    {{loginMessage}}
+                </div>
+                <br/>
+                <a href ng-click = "isRestorePassword = !isRestorePassword">Forgot your password?</a>
+            </td>
+            <td>
+                <div ng-show ="isRestorePassword" ng-model ="isRestorePassword">
+                    <h2>To restore your password please enter your username:</h2><br/>
+                    <table>
+                            <tr>
+                                <td> Username: </td>
+                                <td> <input ng-model="usernameForPassRestore" type="text"></td>
+                                <td> <button ng-click="getUsersVarQuestions()">Enter</button></td>
+                            </tr>
+                    </table>
+                    <h2>Please choose one varification question:</h2><br/>
+                    <table>
+                            <tr>
+                                <td> Varification question: </td>
+                                <td> <select ng-model="selectedVarQuestion" ng-options="item for item in varQuestions"></select></td>
+                            </tr>
+                            <tr>
+                                <td> Answer: </td>
+                                <td> <input ng-model="answerForPassRestore" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td> <button ng-click="restorePassword()">Restore Password</button></td>
+                            </tr>
+                            <tr>
+                                <td> Your password is: </td>
+                                <td> {{restoredPassword}}</td>
+                            </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div ng-show = "isLogedIn" class="wrapper">
+    <h1>Are you sure you want to log out?</h1>
+    <a href="#!" ng-click="changeIsLogedIn()"><button>Yes</button></a>
+    <div class="divider"></div>
+    <a href="#!"><button>No</button></a>
+</div>
+

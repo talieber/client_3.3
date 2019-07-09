@@ -1,0 +1,72 @@
+<h1>Your favorite points of interest:</h1>
+<br/>
+<th>
+    <button ng-click="sortByCategory('category')">Sort by category</button>
+    <span class="sortorder" ng-show="propertyName === 'category'" ng-class="{reverse: reverse}"></span>
+  </th>
+  <th>
+    <button ng-click="sortBy('rank')">Sort by rank</button>
+    <span class="sortorder" ng-show="propertyName === 'rank'" ng-class="{reverse: reverse}"></span>
+  </th>
+
+<button id="Mreview" ng-hide=true>Add a review</button>
+<button ng-click="saveFavoriteList()" ng-hide="noFavorite">Save your new favorite list!</button>
+<br/>
+<table width=100%>
+    <tr ng-repeat = "site in savedPOIs | orderBy:propertyName:reverse">                
+        <td>
+            <a ng-href="#!selectedPOI/{{site.poi_name}}"><h3>{{site.poi_name}}</h3></a>
+            <!-- <a ng-href="#!selectedPOI/{{site.poi_name}}"><img ng-src="{{site.picture}}" ng-hide="isHidePicture" width="300" height="300"></a> -->
+            <a ng-href="#!selectedPOI/{{site.poi_name}}"><img ng-src="{{site.picture}}" width="300" height="300"></a>
+            <!-- <img ng-src="toAdd.png" width="30" height="30" ng-click="addToFavorites(s.poi_name)" ng-hide="toHide(s.poi_name)"> -->
+            <img ng-src="love.png" width="30" height="30" ng-click="removeFromFavorites(site.poi_name)" ng-show="toHide(site.poi_name)">
+            <br/>
+            {{site.category}}
+            <br/>
+            <br/>
+        </td>
+        <td>
+            <div>
+                <button ng-click="addAReview(site.poi_name)">Add a review!</button>
+                <button ng-click="moveDown($index)">Move down</button>
+                <button ng-click="moveUp($index)">Move up</button>
+
+
+            </div>
+        </td>
+    </tr>
+</table>
+
+<!-- The Modal -->
+<div id="reviewModal" class="modal">
+
+    <!-- Modal content -->
+    <div ng-model="poiForReview"class="modal-content">
+        <span class="close">&times;</span>
+        <table>
+            <tr>
+                <td>
+                    Rank the site:
+                </td>
+                <td>
+                    <select ng-model="choosenRank" ng-options="b for b in ranks">
+                            <option value="">-- Select rank --</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Add content:
+                </td>
+                <td>
+                    <textarea ng-model="content" type="text" rows=5 cols=100></textarea>
+                </td>
+            </tr>
+        </table>
+        <button ng-click="saveReview()">Submit review!</button>
+        <br/>
+        {{message}}
+        <br/>
+    </div>
+</div>
+

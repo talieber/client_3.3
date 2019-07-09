@@ -1,0 +1,48 @@
+
+<div ng-hide = "isLogedIn" class="wrapper">
+    <h1>Hello Guest!</h1>
+    <h3>
+        We've seen that you are not connected! <br/>
+        If you've already got a user, please log in.<br/>
+        If not, we recommend you to sign in to enjoy more of our functionality.
+    </h3>
+    <br/>
+    <a href="#!login"><button>Login</button></a>
+    <div class="divider"></div>
+    <a href="#!register"><button>Register</button></a>
+    
+    <table width=100%>
+        <tr>
+            <td ng-repeat = "site in returnPOIs">
+                <a ng-href="#!selectedPOI/{{site.poi_name}}"><h3>{{site.poi_name}}</h3></a>
+                <br/>
+                <a ng-href="#!selectedPOI/{{site.poi_name}}"><img ng-src="{{site.picture}}" width="300" height="300"></a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div ng-show = "isLogedIn">
+
+    <h1>Hello {{username}}!</h1>  
+    <h2>Popular ponits of interest for you:</h2> 
+    <table width=100%>
+        <tr>
+            <td ng-repeat = "site in popularPOIs">
+                <a ng-href="#!selectedPOI/{{site.poi_name}}"><h3>{{site.poi_name}}</h3></a>
+                <br/>
+                <a ng-href="#!selectedPOI/{{site.poi_name}}"><img ng-src="{{site.picture}}" width="300" height="300"></a>
+            </td>
+        </tr>
+    </table>
+    <h2>Your last saved ponits of interest:</h2> 
+    {{message}}
+    <table width=100%>
+        <tr>                
+            <td ng-repeat = "site in savedPOIs|limitTo:2">
+                <a ng-href="#!selectedPOI/{{site.poi_name}}"><h3>{{site.poi_name}}</h3></a>
+                <br/>
+                <a ng-href="#!selectedPOI/{{site.poi_name}}"><img ng-src="{{site.picture}}" width="300" height="300"></a>
+            </td>
+        </tr>
+    </table>
+</div>

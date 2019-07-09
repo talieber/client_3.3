@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>La Bella Roma</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body ng-app="myApp">
+        <!-- load angular -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.js"></script>
+        <script src="https://code.angularjs.org/1.7.8/angular-route.js"></script>
+
+        <!-- load app -->
+        <script src="app.js"></script>
+
+        <!-- load controllers -->
+        <script src="pages/about/aboutController.js"></script>
+        <script src="pages/poi/poiController.js"></script>
+        <script src="pages/http/httpController.js"></script>
+        <script src="pages/homepage/homepageController.js"></script>
+        <script src="pages/register/registerController.js"></script> 
+        <script src="pages/login/loginController.js"></script> 
+        <script src="pages/favoritePOIs/favoritePOIsController.js"></script> 
+        <script src="pages/selectedPOI/selectedPOIController.js"></script> 
+        <script src="pages/favoritePOIs/modalController.js"></script> 
+
+        <!-- load bootstrap-->
+        <link data-require="bootstrap@3.3.7" data-semver="3.3.7" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <link data-require="bootstrap-css@3.*" data-semver="3.3.7" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
+        <script data-require="angular.js@1.6.5" data-semver="1.6.5" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+        <script data-require="angular-animate@1.6.*" data-semver="1.6.5" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.min.js"></script>
+        <script data-require="angular-touch@1.6.*" data-semver="1.6.2" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-touch.js"></script>
+        <script data-require="ui-bootstrap@*" data-semver="2.5.0" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.5.0.js"></script>
+        
+        <!-- menu -->
+        <div id="menu">
+            <table width=100%>
+                <tr>
+                <td>
+                    <a href="#!">Home Page</a>
+                </td>
+                <td>
+                    <a href="#!poi">Points of Interest</a>
+                </td>
+                <td>
+                    <a href="#!favoritePOIs" ng-show="isLogedIn">Your favorite points of Interest ({{favoritePOIsSize}})</a>
+                </td>
+                <td>
+                    <a href="#!login" ng-hide="isLogedIn">Login</a>
+                </td>
+                <td>
+                    <a href="#!register" ng-hide="isLogedIn">Register</a>
+                </td>
+                <td>
+                    <a href="#!about">About</a>
+                </td>
+                <td>
+                    <a href="#!login" ng-show="isLogedIn">Logout</a>
+                </td>
+                </tr>
+            </table>
+        </div>  
+        <img class="home_img" src="rome.png" width=100% height="40%" style="object-position: 50% 50%">
+
+        <!-- This section changes as the hashbang changes -->
+        <div ng-view></div>
+    </body>
+</html>
