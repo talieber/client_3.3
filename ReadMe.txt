@@ -18,8 +18,8 @@ Here are some important things you need to know:
 
 4.	You can find the servre in port 3000.
 
-5.	Server's git link: XXX
+5.	Server's git link: https://github.com/talieber/server_3.2 (with no moduls)
 
-6.	Client's git link: XXX
+6.	Client's git link: https://github.com/talieber/client_3.3
 
 Tal Lieber 204529473, Yafit Zohar 203180617
